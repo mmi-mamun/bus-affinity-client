@@ -1,35 +1,35 @@
 import React from 'react';
-import clock from '../assets/icons/clock.svg'
-import marker from '../assets/icons/marker.svg'
-import phone from '../assets/icons/phone.svg'
+import booking from '../assets/icons/booking-white.png'
+import snacks from '../assets/icons/snacks-white.png'
+import wifi from '../assets/icons/wifi-white.png'
 import Card from './Card';
 
 const InfoSection = () => {
     const cardData = [
         {
             id: 1,
-            title: "Opening Hours",
-            description: "Always opened",
-            icon: clock,
+            title: "Fast Booking",
+            description: "We provide fast booking system for you great trip.",
+            icon: booking,
             bgClass: "bg-accent"
         },
         {
             id: 2,
-            title: "Our locations",
-            description: "Dhaka, Bangladesh",
-            icon: marker,
-            bgClass: "bg-secondary"
+            title: "Provide Snacks",
+            description: "We provide Hygienic snacks & Beverage during your journey.",
+            icon: snacks,
+            bgClass: "bg-gradient-to-r from-secondary to-accent"
         },
         {
-            id: 1,
-            title: "Contact Us",
-            description: "+88 01 567 806 806",
-            icon: phone,
-            bgClass: "bg-accent"
+            id: 3,
+            title: "WiFi Facilities",
+            description: "For making your journey be great we provide fast internet facilities.",
+            icon: wifi,
+            bgClass: "bg-secondary"
         }
     ]
     return (
-        <div className='grid grid-cols-3 gap-6 py-24 px-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12 py-24 lg:px-12 px-6'>
             {
                 cardData.map(card => <Card key={card.id} card={card}></Card>)
             }

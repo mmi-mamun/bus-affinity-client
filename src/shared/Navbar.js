@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/icons/logo.png'
 
 const Navbar = () => {
     const menuItems = <>
@@ -22,7 +23,8 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center">
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <img className=' w-32' src={logo} alt="" />
+                {/* <a className="btn btn-ghost normal-case text-xl">Bus Affinity</a> */}
             </div>
             <div className="navbar-end">
                 <button className="btn btn-ghost btn-circle">
