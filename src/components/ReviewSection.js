@@ -9,17 +9,17 @@ const ReviewSection = () => {
     const reviews = [
         {
             id: 1,
-            name: 'GM Tasrif',
+            name: 'Samira Akter',
             review: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
             location: 'Dhaka',
-            img: people1
+            img: people2
         },
         {
             id: 2,
             name: 'MI Mamun',
             review: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal distribu to using Content here, content',
             location: 'Dhaka',
-            img: people2
+            img: people1
         },
         {
             id: 3,
