@@ -5,7 +5,7 @@ import logo from '../assets/icons/logo.png'
 const Navbar = () => {
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/">Check Space</Link></li>
+        <li><Link to="/bookings">Booking</Link></li>
         <li><Link to="/">Contact Us</Link></li>
         <li><Link to="/">About Us</Link></li>
         <li><Link to="/login">Login</Link></li>
