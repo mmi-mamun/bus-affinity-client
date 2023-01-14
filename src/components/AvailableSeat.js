@@ -1,16 +1,27 @@
+import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import BookingModal from './BookingModal';
 import BookingOption from './BookingOption';
 
 const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
-    const [bookingOptions, setBookingOptions] = useState([]);
     const [bookingSeat, setBookingSeat] = useState(null);
-    useEffect(() => {
-        fetch(`http://localhost:5000/bookingOptions`)
-            .then(res => res.json())
-            .then(data => setBookingOptions(data))
-    }, [])
+
+    // const [bookingOptions, setBookingOptions] = useState([]);
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/bookingOptions`)
+    //         .then(res => res.json())
+    //         .then(data => setBookingOptions(data))
+    // }, [])
+
+    const { data: bookingOptions = [] } = useQuery({
+        queryKey: ['bookingOptions'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/bookingOptions`);
+            const data = await res.json();
+            return data;
+        }
+    })
 
     return (
         <section>
