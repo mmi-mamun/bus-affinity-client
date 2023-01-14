@@ -4,14 +4,21 @@ import logo from '../assets/icons/logo.png'
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, signingOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        signingOut()
+            .then(() => {
+                console.log("Logout done!")
+            })
+            .catch(err => console.log(err))
+    }
     const menuItems = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/bookings">Booking</Link></li>
         <li><Link to="/">Contact Us</Link></li>
-        <li><Link to="/">About Us</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
         {
-            user?.uid ? <li><Link to="/login">Logout</Link></li> : <li><Link to="/login">Login</Link></li>
+            user?.uid ? <li><button onClick={handleLogOut}>Logout</button></li> : <li><Link to="/login">Login</Link></li>
         }
     </>
     return (

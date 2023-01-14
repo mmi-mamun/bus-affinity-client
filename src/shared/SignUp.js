@@ -1,20 +1,35 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const SignUp = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [signupError, setSignupError] = useState('');
     const [data, setData] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const handleRegister = data => {
+        setSignupError('');
         console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success("User created successfully..!")
+
+                const userInfo = {
+                    displayName: data.name
+                }
+
+                updateUser(userInfo)
+                    .then(() => { console.log("New user added successfully..") })
+                    .catch(err => console.log(err));
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error.message)
+                setSignupError(error.message)
+            })
     }
     return (
         <div className='h-[800px] flex justify-center items-center'>
@@ -49,6 +64,10 @@ const SignUp = () => {
 
 
                     <input type="submit" className='btn btn-accent mt-6 w-full my-3' value="Sign Up" />
+
+                    {
+                        signupError && <p className="text-red-600">{signupError}</p>
+                    }
                 </form>
                 <p>Already have an account? <Link to="/login" className='text-secondary font-semibold'>Please Login</Link></p>
                 <div className="divider">OR</div>
