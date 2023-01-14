@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
+import LoadSpinner from '../shared/LoadSpinner';
 import BookingModal from './BookingModal';
 import BookingOption from './BookingOption';
 
 const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
     const [bookingSeat, setBookingSeat] = useState(null);
+    const date = format(selectedDate, 'PPPP');
 
     // const [bookingOptions, setBookingOptions] = useState([]);
     // useEffect(() => {
@@ -14,14 +16,18 @@ const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
     //         .then(data => setBookingOptions(data))
     // }, [])
 
-    const { data: bookingOptions = [] } = useQuery({
-        queryKey: ['bookingOptions'],
+    const { data: bookingOptions = [], refetch, isLoading } = useQuery({
+        queryKey: ['bookingOptions', date],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookingOptions`);
+            const res = await fetch(`http://localhost:5000/bookingOptions?date=${date}`);
             const data = await res.json();
             return data;
         }
     })
+
+    if (isLoading) {
+        return <LoadSpinner></LoadSpinner>
+    }
 
     return (
         <section>
@@ -37,7 +43,7 @@ const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
             </div>
             {
                 bookingSeat &&
-                <BookingModal bookingSeat={bookingSeat} selectedDate={selectedDate} setBookingSeat={setBookingSeat}></BookingModal>
+                <BookingModal bookingSeat={bookingSeat} selectedDate={selectedDate} setBookingSeat={setBookingSeat} refetch={refetch}></BookingModal>
             }
         </section>
     );
