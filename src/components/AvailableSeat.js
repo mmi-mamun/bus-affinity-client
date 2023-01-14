@@ -7,7 +7,7 @@ const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
     const [bookingOptions, setBookingOptions] = useState([]);
     const [bookingSeat, setBookingSeat] = useState(null);
     useEffect(() => {
-        fetch('bookingOptions.json')
+        fetch(`http://localhost:5000/bookingOptions`)
             .then(res => res.json())
             .then(data => setBookingOptions(data))
     }, [])
