@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
+import BookingModal from './BookingModal';
 import BookingOption from './BookingOption';
 
 const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
     const [bookingOptions, setBookingOptions] = useState([]);
+    const [bookingSeat, setBookingSeat] = useState(null);
     useEffect(() => {
         fetch('bookingOptions.json')
             .then(res => res.json())
@@ -19,9 +21,12 @@ const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
             </div>
             <div className='grid gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 px-12'>
                 {
-                    bookingOptions.map(option => <BookingOption key={option.custom_id} bookingOption={option}></BookingOption>)
+                    bookingOptions.map(option => <BookingOption key={option.custom_id} bookingOption={option} setBookingSeat={setBookingSeat}></BookingOption>)
                 }
             </div>
+            {
+                bookingSeat && <BookingModal bookingSeat={bookingSeat} selectedDate={selectedDate} setBookingSeat={setBookingSeat}></BookingModal>
+            }
         </section>
     );
 };

@@ -1,11 +1,11 @@
 [
     {
         "custom_id": 1,
-        "busName": "Desh Travel",
+        "busName": "Desh 🚍 Travel",
         "destination": "Dhaka -To- Bandarban",
         "travelTime": "10:30pm - 06:15am",
         "rentalFee": 1500,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
@@ -50,11 +50,11 @@
     },
     {
         "custom_id": 2,
-        "busName": "Green Line",
+        "busName": "Green 🚍 Line",
         "destination": "Dhaka -To- Cox's bazar",
         "travelTime": "11:45pm - 09:15am",
         "rentalFee": 1800,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
@@ -99,11 +99,11 @@
     },
     {
         "custom_id": 3,
-        "busName": "Ahamed Paribahan",
+        "busName": "Ahamed 🚍 Paribahan",
         "destination": "Dhaka -To- Jaflong",
         "travelTime": "11:00pm - 05:30am",
         "rentalFee": 2000,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
@@ -148,11 +148,11 @@
     },
     {
         "custom_id": 4,
-        "busName": "Desh Travel",
+        "busName": "Desh 🚍 Travel",
         "destination": "Bandarban -To- Dhaka",
         "travelTime": "8:15am - 04:00pm",
         "rentalFee": 1500,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
@@ -197,11 +197,11 @@
     },
     {
         "custom_id": 5,
-        "busName": "Green Line",
+        "busName": "Green 🚍 Line",
         "destination": "Cox's bazar -To- Dhaka",
         "travelTime": "12:00pm - 10:15pm",
         "rentalFee": 1800,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
@@ -246,11 +246,11 @@
     },
     {
         "custom_id": 6,
-        "busName": "Ahamed Paribahan",
+        "busName": "Ahamed 🚍 Paribahan",
         "destination": "Jaflong -To- Dhaka",
         "travelTime": "08:30am - 03:15pm",
         "rentalFee": 2000,
-        "seat": [
+        "seats": [
             "A-1",
             "A-2",
             "A-3",
