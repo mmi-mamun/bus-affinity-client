@@ -40,6 +40,10 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
                     setBookingSeat(null);
                     refetch();
                 }
+                else {
+                    toast.error(data.message);
+                    setBookingSeat(null);
+                }
 
             })
     }
