@@ -1,40 +1,45 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthProvider';
+import { AiOutlineFieldNumber, IconName } from "react-icons/ai";
 
 const MyBookings = () => {
+    const { user } = useContext(AuthContext);
+    const url = `http://localhost:5000/bookings?email=${user?.email}`
+
+    const { data: bookings = [] } = useQuery({
+        queryKey: ['bookings', user?.email],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+    })
     return (
         <div className="overflow-x-auto">
             <table className="table w-full">
                 {/* <!-- head --> */}
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th className='text-lg'><AiOutlineFieldNumber className='h-8 w-8'></AiOutlineFieldNumber></th>
+                        <th className='text-lg'>Destination</th>
+                        <th className='text-lg'><span className='mr-2'>Bus Name</span> (seat)</th>
+                        <th className='text-lg'>Travel Time</th>
+                        <th className='text-lg'>Journey Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* <!-- row 1 --> */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    {/* <!-- row 2 --> */}
-                    <tr className="hover">
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    {/* <!-- row 3 --> */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
+                    {
+                        bookings.map((myBooking, i) =>
+                            <tr key={i} className="hover">
+                                <th>{i + 1}</th>
+                                <td>{myBooking.destination}</td>
+                                <td className='flex gap-2'> <span>{myBooking.busName}</span> <span>({myBooking.seat})</span></td>
+                                <td>{myBooking.travelTime}</td>
+                                <td>{myBooking.bookingDate}</td>
+                            </tr>)
+                    }
+
                 </tbody>
             </table>
         </div>

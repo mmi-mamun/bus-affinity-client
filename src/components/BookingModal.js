@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) => {
-    const { busName, seats, destination } = bookingSeat;
+    const { busName, seats, destination, travelTime } = bookingSeat;
     const { user } = useContext(AuthContext);
 
     const handleBooking = event => {
@@ -17,7 +17,7 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
 
         const booking = {
             name,
-            email, contactNumber: number, bookingDate: date, destination, busName, seat
+            email, contactNumber: number, bookingDate: date, destination, travelTime, busName, seat
         }
 
         // TODO: send data to the server
