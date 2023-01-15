@@ -6,7 +6,7 @@ import { DayPicker } from 'react-day-picker';
 const BookingBanner = ({ selectedDate, setSelectedDate }) => {
     let footer = <p className='py-5'>Please pick a day..</p>;
     if (selectedDate) {
-        footer = <p className='py-5'>You have picked: {format(selectedDate, 'PPPP')}.</p>;
+        footer = <p className='py-5'>You have picked: <br /> {format(selectedDate, 'PPPP')}.</p>;
     }
 
     return (

@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/icons/logo.png'
 import { AuthContext } from '../contexts/AuthProvider';
+import { AiOutlineDashboard } from "react-icons/ai";
+import { CgMenuRound } from "react-icons/cg";
 
 const Navbar = () => {
     const { user, signingOut } = useContext(AuthContext);
@@ -26,7 +28,8 @@ const Navbar = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost btn-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                        {/* <CgMenuRound className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"></CgMenuRound> */}
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuItems}
@@ -48,6 +51,10 @@ const Navbar = () => {
                         <span className="badge badge-xs badge-primary indicator-item">{user?.password}</span>
                     </div>
                 </button> */}
+                <label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-ghost btn-circle lg:hidden">
+                    <AiOutlineDashboard className="h-12 w-12"></AiOutlineDashboard>
+                    {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg> */}
+                </label>
             </div>
         </div>
     );
