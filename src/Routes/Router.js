@@ -8,6 +8,7 @@ import DashBoard from "../pages/DashBoard";
 import Home from "../pages/Home";
 import Login from "../shared/Login";
 import SignUp from "../shared/SignUp";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/users',
-                element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
         ]
     }
