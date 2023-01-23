@@ -1,5 +1,5 @@
 import React from 'react';
-import terms from '../assets/icons/terms.jpg'
+import terms from '../assets/images/terms.jpg'
 
 const Terms = () => {
     return (

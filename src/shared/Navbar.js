@@ -15,12 +15,12 @@ const Navbar = () => {
             .catch(err => console.log(err))
     }
     const menuItems = <>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/bookings">Booking</Link></li>
-        <li><Link to="/">Contact Us</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link className="text-lg font-semibold uppercase" to="/">Home</Link></li>
+        <li><Link className="text-lg font-semibold uppercase" to="/bookings">Booking</Link></li>
+        <li><Link className="text-lg font-semibold uppercase" to="/">Contact Us</Link></li>
+        <li><Link className="text-lg font-semibold uppercase" to="/dashboard">Dashboard</Link></li>
         {
-            user?.uid ? <li><button onClick={handleLogOut}>Logout</button></li> : <li><Link to="/login">Login</Link></li>
+            user?.uid ? <li><button className="text-lg font-semibold uppercase" onClick={handleLogOut}>Logout</button></li> : <li><Link to="/login">Login</Link></li>
         }
     </>
     return (

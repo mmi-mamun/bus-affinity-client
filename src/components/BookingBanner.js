@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import bookingBanner from '../assets/Banner/bookingTicket.jpg'
+import bookingBanner from '../assets/Banner/bookingBanner.jpg'
 import { format } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 
