@@ -32,6 +32,7 @@ const MyBookings = () => {
                 </thead>
                 <tbody>
                     {
+                        bookings &&
                         bookings?.map((myBooking, i) =>
                             <tr key={myBooking?._id} className="hover">
                                 <th>{i + 1}</th>

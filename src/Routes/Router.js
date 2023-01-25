@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddDriver from "../dashboardComponents/AddDriver";
 import AllUsers from "../dashboardComponents/AllUsers";
 import MyBookings from "../dashboardComponents/MyBookings";
 import DashboardLayout from "../layouts/DashboardLayout";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/users',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path: '/dashboard/add-driver',
+                element: <AdminRoute><AddDriver></AddDriver></AdminRoute>
             },
         ]
     }

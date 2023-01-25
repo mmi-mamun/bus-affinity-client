@@ -28,7 +28,11 @@ const DashboardLayout = () => {
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to='/dashboard/my-bookings'>My Bookings</Link></li>
                         {
-                            isAdmin && <><li><Link to='/dashboard/users'>All Users</Link></li></>
+                            isAdmin &&
+                            <>
+                                <li><Link to='/dashboard/users'>All Users</Link></li>
+                                <li><Link to='/dashboard/add-driver'>Add Driver</Link></li>
+                            </>
                         }
 
                         <li><a>Sidebar Item 2</a></li>

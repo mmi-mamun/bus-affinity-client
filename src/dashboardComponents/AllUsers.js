@@ -76,7 +76,7 @@ const AllUsers = () => {
                                 <td>
                                     {user?.email}
                                 </td>
-                                <td>{user.role !== 'Admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-accent btn-ghost btn-outline btn-xs'>Make Admin</button>}</td>
+                                <td>{user.role !== 'Admin' ? <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-accent btn-ghost btn-outline btn-xs'>Make Admin</button> : <div className="badge">Admin</div>}</td>
                                 <td><button className="btn btn-outline btn-error btn-ghost btn-xs">Delete User</button></td>
                                 {/* <th>
                                     <button className="btn btn-ghost btn-xs">details</button>
