@@ -11,6 +11,7 @@ const SignUp = () => {
     const [data, setData] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const [imageURL, setImageURL] = useState('');
 
 
     const [createdUserEmail, setCreatedUserEmail] = useState('');
@@ -19,22 +20,44 @@ const SignUp = () => {
         navigate('/')
     }
 
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+    // console.log(imageHostKey);
+
     const handleRegister = data => {
-        setSignupError('');
         console.log(data);
-        createUser(data.email, data.password)
+        setSignupError('');
+        // console.log(data.image[0]);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    console.log(imgData.data.url)
+                    setImageURL(imgData.data.url);
+                }
+            })
+
+        createUser(data.email, data.password, imageURL)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 toast.success("User created successfully..!")
 
                 const userInfo = {
-                    displayName: data.name
+                    displayName: data.name,
+                    photoURL: imageURL
                 }
 
+                console.log(userInfo)
                 updateUser(userInfo)
                     .then(() => {
-                        saveUserInDatabase(data.name, data.email)
+                        saveUserInDatabase(data.name, data.email, imageURL)
                     })
                     .catch(err => console.log(err));
             })
@@ -104,6 +127,12 @@ const SignUp = () => {
                             placeholder="Your password" className="input input-bordered w-full" type="password" />
 
                         {errors.password && <p role="alert" className='text-red-600'>{errors.password?.message}</p>}
+                    </div>
+
+                    <div className="form-control w-full">
+                        <label className="label"> <span className="label-text">Photo</span> </label>
+                        <input {...register("image", { required: true })} aria-invalid={errors.name ? "true" : "false"} placeholder="Your name" className="input input-bordered w-full" type="file" />
+                        {errors.name?.type === 'required' && <p role="alert" className='text-red-600'>Name is required</p>}
                     </div>
 
 

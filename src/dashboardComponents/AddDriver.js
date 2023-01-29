@@ -16,6 +16,11 @@ const AddDriver = () => {
     if (isLoading) {
         return <LoadSpinner></LoadSpinner>
     }
+
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+    console.log(imageHostKey);
+
+
     const handleAddDriver = event => {
         event.preventDefault();
         const form = event.target;
@@ -23,7 +28,8 @@ const AddDriver = () => {
         const email = form.email.value;
         const phone = form.phone.value;
         const bus = form.bus.value;
-        console.log({ name, email, phone, bus })
+        const photo = form.photo.value;
+        console.log({ name, email, phone, bus, photo })
 
     }
     return (
@@ -71,9 +77,16 @@ const AddDriver = () => {
                             </select>
                         </div>
 
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Photo</span>
+                            </label>
+                            <input name='photo' type="file" placeholder="Photo URL" className="input input-bordered" />
+                        </div>
+
 
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Add Driver</button>
                         </div>
                     </form>
                 </div>

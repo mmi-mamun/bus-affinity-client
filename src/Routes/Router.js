@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import ImageUpload from "../components/ImageUpload";
 import AddDriver from "../dashboardComponents/AddDriver";
+import AddStaff from "../dashboardComponents/AddStaff";
 import AllUsers from "../dashboardComponents/AllUsers";
 import MyBookings from "../dashboardComponents/MyBookings";
 import DashboardLayout from "../layouts/DashboardLayout";
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/image',
+                element: <ImageUpload></ImageUpload>
             }
         ]
     },
@@ -54,6 +60,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/add-driver',
                 element: <AdminRoute><AddDriver></AddDriver></AdminRoute>
+            },
+            {
+                path: '/dashboard/add-staff',
+                element: <AdminRoute><AddStaff></AddStaff></AdminRoute>
             },
         ]
     }
