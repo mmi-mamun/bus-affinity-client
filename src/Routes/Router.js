@@ -3,6 +3,7 @@ import ImageUpload from "../components/ImageUpload";
 import AddDriver from "../dashboardComponents/AddDriver";
 import AddStaff from "../dashboardComponents/AddStaff";
 import AllUsers from "../dashboardComponents/AllUsers";
+import ManageStaff from "../dashboardComponents/ManageStaff";
 import MyBookings from "../dashboardComponents/MyBookings";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Main from "../layouts/Main";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/add-staff',
                 element: <AdminRoute><AddStaff></AddStaff></AdminRoute>
+            },
+            {
+                path: '/dashboard/manage-staff',
+                element: <AdminRoute><ManageStaff></ManageStaff></AdminRoute>
             },
         ]
     }
