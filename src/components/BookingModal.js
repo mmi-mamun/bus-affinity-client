@@ -13,7 +13,7 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
         const name = form.name.value;
         const email = form.email.value;
         const number = form.number.value;
-        const seat = form.seat.value;
+        const seat = form.checked.value;
 
         const booking = {
             name,
@@ -49,6 +49,7 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
     }
 
     const date = format(selectedDate, 'PPPP')
+
     return (
         <>
             {/* The button to open modal */}
@@ -60,21 +61,34 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{busName}</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <p className="py-4">You've been selected only one seat at a time. And you can booked maximum 2 seats from each bus per day. It's our business policy.</p>
                     <form onSubmit={handleBooking} className='grid gap-3 grid-cols-1'>
-                        <input type="text" value={date} className="input input-bordered input-md w-full" />
-                        <select name='seat' className="select select-bordered w-full">
+                        <input type="text" value={date} className="input input-bordered input-md w-full" required />
+
+                        <input name='name' type="text" placeholder="Your name" className="input input-bordered input-md w-full" defaultValue={user?.displayName} required />
+                        <input name='email' type="email" placeholder="Email address" className="input input-bordered input-md w-full" defaultValue={user?.email} required />
+                        <input name='number' type="text" placeholder="Contact number" className="input input-bordered input-md w-full" required />
+                        {/* <input name='' type="text" placeholder="Type here" className="input input-bordered input-md w-full" /> */}
+                        <p class="seat cursor-pointer">{seats[0]}</p>
+                        <div className="grid grid-cols-4 gap-2 text-center">
+                            {
+                                seats.map((seat, i) =>
+                                    <label name='seat' className="cursor-pointer label flex justify-start">
+                                        <input name='seat' type="checkbox" className="checkbox checkbox-secondary mr-4" key={i} value={seat} />
+                                        <span className="label-text">{seat}</span>
+                                    </label>
+
+                                )
+                            }
+                        </div>
+                        {/* <select name='seat' className="select select-bordered w-full">
                             {
                                 seats.map((seat, i) => < option key={i} value={seat}> {seat}</option>)
-                            }
-                            {/* <option disabled selected>Who shot first?</option>
+                            } */}
+                        {/* <option disabled selected>Who shot first?</option>
                             <option>Han Solo</option>
                             <option>Greedo</option> */}
-                        </select>
-                        <input name='name' type="text" placeholder="Your name" className="input input-bordered input-md w-full" defaultValue={user?.displayName} readOnly />
-                        <input name='email' type="email" placeholder="Email address" className="input input-bordered input-md w-full" defaultValue={user?.email} disabled />
-                        <input name='number' type="number" placeholder="Contact number" className="input input-bordered input-md w-full" />
-                        <input name='' type="text" placeholder="Type here" className="input input-bordered input-md w-full" />
+                        {/* </select> */}
                         <input name='' className='btn btn-accent my-6 w-full max-w-xs mx-auto' type="submit" value="Confirm" />
                     </form>
                 </div>
@@ -82,5 +96,16 @@ const BookingModal = ({ bookingSeat, selectedDate, setBookingSeat, refetch }) =>
         </>
     );
 };
-
+let allSeats = document.querySelectorAll(".selected__seats");
+for (let i = 0; i < allSeats.length; i++) {
+    allSeats[i].addEventListener("click", () => {
+        if (allSeats[i].classList.contains("bg-white")) {
+            allSeats[i].classList.remove("bg-white");
+        } else {
+            allSeats[i].classList.add("bg-white");
+        }
+    })
+}
 export default BookingModal;
+
+
