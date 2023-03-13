@@ -19,7 +19,14 @@ const BookingBanner = ({ selectedDate, setSelectedDate }) => {
                             // mode='range'
                             mode='single'
                             selected={selectedDate}
-                            onSelect={setSelectedDate}
+                            // onSelect={setSelectedDate}
+
+                            /* For preventing deselection (solved by niloy vai)*/
+                            onSelect={(date) => {
+                                if (date) {
+                                    setSelectedDate(date)
+                                }
+                            }}
                             footer={footer}
                         />
                         {/* <p>You have selected date: {format(selectedDate, 'PP')}</p> */}

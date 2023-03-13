@@ -28,7 +28,8 @@ const AllUsers = () => {
             })
     }
     return (
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-full py-6">
+            <h1 className="text-3xl font-semibold text-center my-4 uppercase">All Users</h1>
             <table className="table w-full">
                 {/* <!-- head --> */}
                 <thead>
@@ -43,7 +44,7 @@ const AllUsers = () => {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Promote</th>
-                        <th>Action</th>
+                        {/* <th>Action</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +78,7 @@ const AllUsers = () => {
                                     {user?.email}
                                 </td>
                                 <td>{user.role !== 'Admin' ? <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-accent btn-ghost btn-outline btn-xs'>Make Admin</button> : <div className="badge">Admin</div>}</td>
-                                <td><button className="btn btn-outline btn-error btn-ghost btn-xs">Delete User</button></td>
+                                {/* <td><button className="btn btn-outline btn-error btn-ghost btn-xs">Delete User</button></td> */}
                                 {/* <th>
                                     <button className="btn btn-ghost btn-xs">details</button>
                                 </th> */}

@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import useToken from '../hooks/useToken';
 
-const Login = () => {
+const SafeLogin = () => {
     const { signIn } = useContext(AuthContext);
     const [data, setData] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -39,12 +39,13 @@ const Login = () => {
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h2 className='text-2xl font-extrabold text-center uppercase mb-6'>Login</h2>
+                <h2 className='text-2xl font-extrabold text-center uppercase mb-6'>Safe Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
 
                     <div className="form-control w-full">
                         <label className="label"> <span className="Your email">Email</span> </label>
-                        <input {...register("email", { required: "Email address is required" })} placeholder="First name" className="input input-bordered w-full" type="text" />
+                        {/* <input name='email' type="email" placeholder="Email address" className="input input-bordered input-md w-full" defaultValue={user?.email} required /> */}
+                        <input {...register("email", { required: "Email address is required" })} placeholder="Your email" className="input input-bordered w-full" type="text" defaultValue='admin@gmail.com' />
                         {errors.email && <p role="alert" className='text-red-600'>{errors.email?.message}</p>}
 
                     </div>
@@ -56,7 +57,7 @@ const Login = () => {
                                 required: "Password is required",
                                 minLength: { value: 6, message: "Password must be 6 characters or longer" }
                             })}
-                            placeholder="Your password" className="input input-bordered w-full" type="password" />
+                            placeholder="Your password" className="input input-bordered w-full" type="password" defaultValue='AdmiN@12' />
 
                         {errors.password && <p role="alert" className='text-red-600'>{errors.password?.message}</p>}
 
@@ -82,4 +83,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SafeLogin;

@@ -37,8 +37,9 @@ const AvailableSeat = ({ selectedDate, setSelectedDate, footer }) => {
                 }
             </div>
             <div className='grid gap-6 lg:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-12 px-12'>
+                {console.log(bookingOptions)}
                 {
-                    bookingOptions.map(option => <BookingOption key={option.custom_id} bookingOption={option} setBookingSeat={setBookingSeat} selectedDate={selectedDate}></BookingOption>)
+                    bookingOptions?.map(option => <BookingOption key={option.custom_id} bookingOption={option} setBookingSeat={setBookingSeat} selectedDate={selectedDate}></BookingOption>)
                 }
             </div>
             {

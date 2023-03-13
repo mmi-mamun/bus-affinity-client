@@ -51,8 +51,8 @@ const ManageStaff = () => {
 
 
     return (
-        <div>
-            <h2 className="text-2xl text-center">Manage staff: {staff?.length}</h2>
+        <div className='py-6'>
+            <h2 className="text-2xl text-center my-4">Manage staff: {staff?.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* <!-- head --> */}

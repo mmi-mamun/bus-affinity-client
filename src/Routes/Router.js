@@ -11,6 +11,7 @@ import Bookings from "../pages/Bookings";
 import DashBoard from "../pages/DashBoard";
 import Home from "../pages/Home";
 import Login from "../shared/Login";
+import SafeLogin from "../shared/SafeLogin";
 import SignUp from "../shared/SignUp";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: '/bookings',
                 element: <Bookings></Bookings>
+            },
+            {
+                path: '/safe-login',
+                element: <SafeLogin></SafeLogin>
             },
             {
                 path: '/login',

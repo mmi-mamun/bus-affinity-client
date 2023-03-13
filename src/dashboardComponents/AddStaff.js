@@ -67,7 +67,7 @@ const AddStaff = () => {
     }
     return (
         <div className='w-96 p-7 mx-auto'>
-            <h2 className='text-2xl text-center'>Sign up</h2>
+            <h2 className='text-3xl font-semibold text-center uppercase'>Add Staff</h2>
             <form onSubmit={handleSubmit(handleAddStaff)}>
 
                 <div className="form-control w-full">

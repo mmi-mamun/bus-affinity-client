@@ -31,7 +31,7 @@ const DashboardLayout = () => {
                             isAdmin &&
                             <>
                                 <li><Link to='/dashboard/users'>All Users</Link></li>
-                                <li><Link to='/dashboard/add-driver'>Add Driver</Link></li>
+                                {/* <li><Link to='/dashboard/add-driver'>Add Driver</Link></li> */}
                                 <li><Link to='/dashboard/add-staff'>Add Staff</Link></li>
                                 <li><Link to='/dashboard/manage-staff'>Manage Staff</Link></li>
                             </>
